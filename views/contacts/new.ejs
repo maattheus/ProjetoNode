@@ -1,0 +1,28 @@
+<%- include ('../partials/header.ejs') %>
+    <%- include ('../partials/navbar.ejs') %>
+
+        <div class="container">
+            <hr>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Cadastro de contato</h2>
+                </div>
+                <div class="card-body">
+                    <form action="/contacts/save" method="POST">
+                        <input type="text" name="first" class="form-control" placeholder="Digite seu primeiro nome"
+                            required><br>
+                        <input type="text" name="last" class="form-control" placeholder="Digite seu ultimo nome"
+                            required><br>
+                        <input type="email" name="email" class="form-control" placeholder="Digite seu email"
+                            required><br>
+                        <input type="text" name="telephone" class="form-control" placeholder="Digite seu telefone"
+                            required><br>
+
+                        <button class="btn btn-success">Cadastrar</button>
+                        <a href="/contacts" class="btn btn-primary">Voltar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <%- include ('../partials/footer.ejs') %>

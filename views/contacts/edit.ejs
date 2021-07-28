@@ -1,0 +1,37 @@
+<%- include ('../partials/header.ejs') %>
+    <%- include ('../partials/navbar.ejs') %>
+
+        <div class="container">
+            <hr>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Edição de contato</h2>
+                </div>
+                <div class="card-body">
+                    <form action="/contacts/update" method="POST">
+                        <input type="hidden" name="id" value="<%= contact.id %>">
+                        <input type="text" name="first" class="form-control" value="<%= contact.firstName %>"
+                            placeholder="Digite seu primeiro nome" required><br>
+                        <input type="text" name="last" class="form-control" value="<%= contact.lastName %>"
+                            placeholder="Digite seu ultimo nome" required><br>
+                        <input type="email" name="email" class="form-control" value="<%= contact.email %>"
+                            placeholder="Digite seu email" required><br>
+                        <input type="text" name="telephone" class="form-control" value="<%= contact.telephone %>"
+                            placeholder="Digite seu telefone" required><br>
+                        <label for="">Segundo numero de contato</label>
+                        <% if (have) {%>
+                            <input type="text" name="telephone2" class="form-control" value="<%= phone.number %>"
+                                placeholder="Digite seu telefone" required><br>
+                            <% } else {%>
+
+                                <% } %>
+
+
+                                    <button class="btn btn-success">Atualizar</button>
+                                    <a href="/contacts" class="btn btn-primary">Voltar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <%- include ('../partials/footer.ejs') %>

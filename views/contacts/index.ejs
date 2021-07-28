@@ -1,0 +1,79 @@
+<%- include ('../partials/header.ejs') %>
+    <%- include ('../partials/navbar.ejs') %>
+
+        <div class="container">
+            <hr>
+            <h2>Contatos</h2>
+            <a href="/contacts/new" class="btn btn-success">Cadastrar novo contato</a>
+            <hr>
+            <a href="/contacts/email" class="btn btn-dark">Filtrar por email</a>
+            <a href="/contacts/nomes" class="btn btn-primary">Filtrar por nome</a>
+            <hr>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Primeiro nome</th>
+                        <th>Ultimo nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Telefone 2 </th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <% contacts.forEach(contact=> { %>
+                        <tr>
+                            <th>
+                                <%=contact.id%>
+                            </th>
+                            <th>
+                                <%=contact.firstName%>
+                            </th>
+                            <th>
+                                <%=contact.lastName%>
+                            </th>
+                            <th>
+                                <%=contact.email %>
+                            </th>
+                            <th>
+                                <%=contact.telephone%>
+                            </th>
+
+                            <th>
+                                <% phones.forEach(phones=> { %>
+                                    <% if(phones.contactId==contact.id) { %>
+                                        <%=phones.number %>
+                                            <%}})%>
+                            </th>
+                            <th>
+                                <a href="../phones/new/<%=contact.id%>" class="btn btn-info">Cadastrar novo
+                                    numero</a>
+
+                                <a href="/contacts/edit/<%=contact.id%>" class="btn btn-warning">Editar</a>
+
+                                <form action="/contacts/delete" method="post" style="display: inline;"
+                                    onsubmit="destroy(event, this)">
+                                    <input type="hidden" name="id" value="<%=contact.id%>">
+                                    <button class="btn btn-danger">Deletar</button>
+                                </form>
+                            </th>
+                        </tr>
+                        <% }); %>
+
+                </tbody>
+            </table>
+        </div>
+
+        <%- include ('../partials/footer.ejs') %>
+            <script>
+                function destroy(event, form) {
+                    event.preventDefault();
+                    var result = confirm("Deseja deletar este contato?");
+                    if (result) {
+                        form.submit();
+                    }
+                }
+            </script>

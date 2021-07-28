@@ -1,0 +1,22 @@
+<%- include ('../partials/header.ejs') %>
+    <%- include ('../partials/navbar.ejs') %>
+
+        <div class="container">
+            <hr>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Cadastrar novo numero</h2>
+                </div>
+                <div class="card-body">
+                    <form action="/phone/save" method="POST">
+                        <input type="hidden" name="id" value="<%= id %>">
+                        <input type="text" name="number" class="form-control"
+                            placeholder="Digite outro numero de contato" required><br>
+
+                        <button class="btn btn-success">Cadastrar</button>
+                        <a href="/contacts" class="btn btn-primary">Voltar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <%- include ('../partials/footer.ejs') %>
